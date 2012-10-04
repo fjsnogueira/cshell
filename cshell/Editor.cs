@@ -46,7 +46,7 @@ namespace cshell
             object output = null;
             try
             {
-                output = Engine.Execute(expression, Session);
+                output = Session.Execute(expression);
             }
             catch (Exception exc)
             {

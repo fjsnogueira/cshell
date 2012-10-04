@@ -32,14 +32,12 @@ namespace cshell
         {
             InitializeComponent();
             
-            Engine = new ScriptEngine(
-            new[] {"System",
-                "System.Core",
-                   "PresentationCore",
-                   this.GetType().Assembly.Location});
+            Engine = new ScriptEngine();
+            string[] libs = { "System", "System.Core", "PresentationCore" };
+            libs.ToList().ForEach(lib => Engine.AddReference(lib));
 
             // Create the host object model and seed the Session with it.
-            Session = Session.Create(this.Host);
+            Session = Engine.CreateSession();
         }
 
         
